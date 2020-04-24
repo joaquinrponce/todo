@@ -3,7 +3,7 @@ const toDo = function(item) {
     let newDiv = document.createElement('div');
     newDiv.classList.add('todo')
     newDiv.id = item.date;
-    newDiv.textContent = item.title;
+    newDiv.innerHTML = item.title;
     container.appendChild(newDiv);
 }
 
@@ -13,11 +13,12 @@ const list = function(item) {
     newDiv.classList.add('container');
     newDiv.classList.add('list');
     newDiv.id = item.listName;
+    newDiv.textContent = item.listName;
     container.appendChild(newDiv);
-    addToDos(item);
+    appendToDos(item);
 }
 
-const addToDos = function(item) {
+const appendToDos = function(item) {
     let items = item.getToDos();
     console.log(items);
     for (let i = 0; i < items.length; i++) {
@@ -25,4 +26,8 @@ const addToDos = function(item) {
     }
 }
 
-export {list}
+const categories = function(storage) {
+
+}
+
+export {list, categories}

@@ -1,17 +1,27 @@
-const toDo = (date, title, category) => {
-    return { date, title, category }
+const toDo = (date, title, category, done = false) => {
+    return { date, title, category, done }
 }
 
-const create = (name) => {
-    let toDos = [];
-    let listName = name;
+const listProto = {
+    getToDos() {
+        return this.toDos;
+    },
+    addToDo(date, title) {
+        this.toDos.push(toDo(date, title, listName))
+    }
+}
+
+const list = (name) => {
+    const toDos = [];
+    const listName = name;
     const getToDos = () => {
         return toDos;
     };
     const addToDo = (date, title) => {
         toDos.push(toDo(date, title, listName))
     };
-    return {listName, getToDos, addToDo}
+    return {listName, toDos, getToDos, addToDo}
 }
 
-export {create}
+
+export {list}

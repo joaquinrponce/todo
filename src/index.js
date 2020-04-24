@@ -1,7 +1,14 @@
 import * as list from './list.js'
 import * as display from './display.js'
 
-let myList = list.create('Things');
-myList.addToDo('Tomorrow', 'Wash the dishes');
-console.log(myList.getToDos());
-display.list(myList);
+let listStorage = window.localStorage;
+
+let myList = list.list('Things');
+myList.addToDo('Tomorrow', 'Finish this please');
+myList.addToDo('Tomorrow', 'Finish this please');
+myList.addToDo('Tomorrow', 'Finish this please');
+myList.addToDo('Tomorrow', 'Finish this please');
+myList.addToDo('Tomorrow', 'Finish this please');
+
+
+
