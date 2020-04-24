@@ -1,3 +1,5 @@
+import * as display from './display.js'
+
 const toDo = (date, title, category, done = false) => {
     return { date, title, category, done }
 }
@@ -7,21 +9,35 @@ const listProto = {
         return this.toDos;
     },
     addToDo(date, title) {
-        this.toDos.push(toDo(date, title, listName))
+        let newToDo = toDo(date, title, this.name);
+        this.toDos.push(newToDo);
+        display.appendToDos([newToDo])
     }
 }
 
-const list = (name) => {
-    const toDos = [];
-    const listName = name;
-    const getToDos = () => {
-        return toDos;
-    };
-    const addToDo = (date, title) => {
-        toDos.push(toDo(date, title, listName))
-    };
-    return {listName, toDos, getToDos, addToDo}
-}
+const create = (name) => {
+        let props = { name, toDos: []};
+        let newList = Object.assign(Object.create(listProto), props)
+        display.list(newList);
+        return newList;
+};
+
+const fromJSON = (json) => {
+    return Object.assign(Object.create(listProto), JSON.parse(json))
+};
 
 
-export {list}
+//const list = (name) => {
+ //   const toDos = [];
+//    const listName = name;
+ //   const getToDos = () => {
+ //       return toDos;
+ //   };
+ //   const addToDo = (date, title) => {
+ //       toDos.push(toDo(date, title, listName))
+  //  };
+ //   return {listName, toDos, getToDos, addToDo}
+//}
+
+
+export {create, fromJSON}

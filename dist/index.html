@@ -11,7 +11,20 @@
 </head>
 
 <body>
-  <div id='container-main' class='container'></div>
+  <div id='container-main' class='container'>
+    <div id='listMenu' class='container'>
+      <div id='header'>Your lists</div>
+      <div id='listCreate'>Make a new list<br>
+        Name: <input type='text' id='newListTitle'>
+        <button type='button' id='newListButton'>+</button>
+      </div>
+      <div id='toDoCreate'>Add a toDo<br>
+        Name: <input type='text' id='newToDoTitle'>
+        Date: <input type='text' id='newToDoDate'>
+        <button type='button' id='newToDoButton'>+</button>
+      </div>
+    </div>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>

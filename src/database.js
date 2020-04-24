@@ -1,54 +1,46 @@
-const saveList = function(listDB, list) {
-    listDB.doc(list.listName).set({
-    listName: list.listName,
-    toDos: JSON.stringify(myList.getToDos())
-})};
+import * as list from './list.js'
 
-const getLists = function(listDB) {
-listDB.get().then(snapshot => {
-    snapshot.forEach(doc => {
-        console.log(doc.id, '=>', doc.data());
-    });}).catch(err => {
-    console.log('Error getting documents', err);
-})};
+let currentList = findList('Default') || list.create('Default');
+let savedListNames = getStoredListNames();
+let allLists = getAllLists();
 
-var db = firebase.firestore();
+function newList () {
+    let name = document.getElementById('newListTitle').value; 
+    let newList = list.create(name);
+    saveToLocal(newList);
+    currentList = newList;
+    return newList;
+}
 
-//var docRef = db.collection("users")
+function newToDo () {
+    let date = document.getElementById('newToDoDate').value; 
+    let title = document.getElementById('newToDoTitle').value; 
+    currentList.addToDo(date, title)
+    saveToLocal(currentList);
+}
 
-//var allDocs = docRef.get().then(snapshot => {
-//    snapshot.forEach(doc => {
-//        console.log(doc.id, '=>', doc.data());
-//    });
-//})
-////.catch(err => {
-//    console.log('Error getting documents', err);
-//})
-
-
-let listDB = db.collection('lists')
-
-let newList = list.create('Other');
-
-const addThem = function (list, array) {
-    for (let i = 0; i < array.length; i++) {
-        let item = JSON.parse(array[0]);
-        list.addToDo(item.date, item.title)
+function saveToLocal (list) {
+    if (!savedListNames.includes(list.name)){
+        savedListNames.push(list.name);
     }
+    localStorage.setItem('ListNames', JSON.stringify(savedListNames))
+    localStorage.setItem(list.name, JSON.stringify(list))
 }
 
-const grabLists = function() {
-    let array = [];
-    listDB.get().then(snapshot => {
-    snapshot.forEach(doc => {
-        let parse = JSON.parse(doc.data().toDos);
-        parse.forEach(item => {
-            array.push(item)
-        })
-    });}).catch(err => {
-    console.log('Error getting documents', err);
-})
-    return array
+function findList(name) {
+    return list.fromJSON(localStorage.getItem(name))
 }
 
-console.log(grabLists())
+function getStoredListNames() {
+    return JSON.parse(localStorage.getItem('ListNames')) || []
+}
+
+function getAllLists() {
+    let lists = [];
+    savedListNames.forEach(name => lists.push(findList(name)));
+    return lists;
+}
+
+
+
+export {newList, newToDo, saveToLocal, findList, allLists, currentList}
