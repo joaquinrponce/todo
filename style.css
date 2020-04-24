@@ -60,13 +60,17 @@ body {
     background: linear-gradient(to top, rgb(0, 150, 25), rgb(150, 255, 130));
 }
 
+#listMenu {
+    flex-direction: column;
+}
+
 .list {
     margin: auto;
-    border: 1px solid red;
     justify-content: center;
     flex-direction: column;
     height: max-content;
     width: 900px;
+    background: rgba(255, 255, 255, .7);
 }
 
 .todo {
@@ -77,10 +81,56 @@ body {
     box-shadow: 0 0 10px;
     border-radius: 5px;
     font-size: 15px;
+    animation: fadein 2s;
+    -moz-animation: fadein 1s;
+    /* Firefox */
+    -webkit-animation: fadein 1s;
+    /* Safari and Chrome */
+    -o-animation: fadein 1s;
+    /* Opera */
+}
+
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein {
+    /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein {
+    /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein {
+    /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .date {
     margin-left: auto;
     font-weight: bold;
 }
+
+
 
