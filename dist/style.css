@@ -64,7 +64,7 @@ body {
     flex-direction: column;
 }
 
-.list {
+#list-display {
     margin: auto;
     justify-content: center;
     flex-direction: column;
@@ -90,6 +90,19 @@ body {
     /* Opera */
 }
 
+.date {
+    margin-left: auto;
+    font-weight: bold;
+}
+
+.yeet button {
+    background: red;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+/* things for animation */
 
 @keyframes fadein {
     from {
@@ -125,11 +138,6 @@ body {
     to {
         opacity: 1;
     }
-}
-
-.date {
-    margin-left: auto;
-    font-weight: bold;
 }
 
 

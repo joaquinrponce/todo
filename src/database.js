@@ -41,6 +41,10 @@ function getAllLists() {
     return lists;
 }
 
+function switchList (target) {
+    currentList = target;
+}
 
 
-export {newList, newToDo, saveToLocal, findList, allLists, currentList}
+
+export {newList, newToDo, saveToLocal, findList, allLists, currentList, switchList}
