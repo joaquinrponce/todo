@@ -62,15 +62,54 @@ body {
 
 #listMenu {
     flex-direction: column;
+    background: rgba(255, 255, 255, .7);
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#listMenu div {
+    margin-top: 15px;
+}
+
+#listMenu .header {
+    align-self: center;
+    font-weight: bold;
 }
 
 #list-display {
     margin: auto;
-    justify-content: center;
+    margin-top: 100px;
     flex-direction: column;
     height: max-content;
-    width: 900px;
-    background: rgba(255, 255, 255, .7);
+    width: 60%;
+}
+
+#list-display .title {
+    align-self: center;
+    font-weight: bold;
+}
+
+#newToDoDate {
+    margin-top: 5px;
+}
+
+.addButton {
+    background-color: rgb(64, 223, 64);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition-property: background;
+    width: 35px;
+    height: 25px;
+}
+
+.addButton:hover {
+    background: rgb(48, 168, 48);
+    transition: .3s;
 }
 
 .todo {
@@ -78,7 +117,6 @@ body {
     margin-top: 10px;
     padding: 10px;
     background: rgba(255, 255, 255, .7);
-    box-shadow: 0 0 10px;
     border-radius: 5px;
     font-size: 15px;
     animation: fadein 2s;
@@ -92,14 +130,29 @@ body {
 
 .date {
     margin-left: auto;
+    padding-left: 5px;
     font-weight: bold;
+    min-width: fit-content;
 }
 
-.yeet button {
+button:hover{
+    cursor: pointer;
+}
+
+.yeetButton {
+    margin-left: 5px;
     background: red;
     border: none;
     border-radius: 5px;
     color: white;
+    transition-property: background;
+    width: 25px;
+    font-weight: bold;
+}
+
+.yeetButton:hover {
+    background: rgb(141, 0, 0);
+    transition: .3s;
 }
 
 /* things for animation */

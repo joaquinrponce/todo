@@ -12,6 +12,9 @@ const listProto = {
         let newToDo = toDo(date, title, this.name);
         this.toDos.push(newToDo);
         display.appendToDos([newToDo])
+    },
+    removeToDo(index) {
+        this.toDos[index] = null
     }
 }
 

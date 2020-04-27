@@ -13,17 +13,19 @@
 <body>
   <div id='container-main' class='container'>
     <div id='listMenu' class='container'>
-      <div id='header'>Your lists</div>
+      <div class='header'>Your lists</div>
       <ul id='showLists'>
       </ul>
-      <div id='listCreate'>Make a new list<br>
-        Name: <input type='text' id='newListTitle'>
-        <button type='button' id='newListButton'>+</button>
+      <div id='listCreate' class='header'>Make a new list</div>
+      <div>
+        Name: <input type='text' placeholder='Things I Like To Procrastinate' id='newListTitle'>
+        <button type='button' class='addButton' id='newListButton'>+</button>
       </div>
-      <div id='toDoCreate'>Add a toDo<br>
-        Name: <input type='text' id='newToDoTitle'>
-        Date: <input type='text' id='newToDoDate'>
-        <button type='button' id='newToDoButton'>+</button>
+      <div id='toDoCreate' class='header'>Add a toDo</div>
+      <div>
+        <p>Description: <input type='text' placeholder='Study Javascript' id='newToDoTitle'></p>
+        <p>Date: <input type='date' value='2020-01-01' id='newToDoDate'>
+        <button type='button' class='addButton' id='newToDoButton'>+</button></p>
       </div>
     </div>
   </div>

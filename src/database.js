@@ -1,6 +1,7 @@
 import * as list from './list.js'
+import * as display from './display.js'
 
-let currentList = findList('Default') || list.create('Default');
+let currentList = findList('Default') ? findList('Default') : list.create('Default');
 let savedListNames = getStoredListNames();
 let allLists = getAllLists();
 
@@ -19,6 +20,12 @@ function newToDo () {
     saveToLocal(currentList);
 }
 
+function removeToDo (target) {
+    currentList.removeToDo(target);
+    saveToLocal(currentList);
+    display.list(currentList);
+}
+
 function saveToLocal (list) {
     if (!savedListNames.includes(list.name)){
         savedListNames.push(list.name);
@@ -28,7 +35,11 @@ function saveToLocal (list) {
 }
 
 function findList(name) {
-    return list.fromJSON(localStorage.getItem(name))
+    let saved_list = localStorage.getItem(name)
+    if (list === null) {
+        return false
+    }
+    return list.fromJSON(saved_list)
 }
 
 function getStoredListNames() {
@@ -47,4 +58,4 @@ function switchList (target) {
 
 
 
-export {newList, newToDo, saveToLocal, findList, allLists, currentList, switchList}
+export {newList, newToDo, saveToLocal, findList, allLists, currentList, switchList, removeToDo}
