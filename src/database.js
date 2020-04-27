@@ -36,7 +36,7 @@ function saveToLocal (list) {
 
 function findList(name) {
     let saved_list = localStorage.getItem(name)
-    if (list === null) {
+    if (saved_list === null) {
         return false
     }
     return list.fromJSON(saved_list)
