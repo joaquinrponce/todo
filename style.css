@@ -68,6 +68,8 @@ body {
     margin-left: 25px;
     border-radius: 10px;
     padding: 10px;
+    height: max-content;
+    transition: max-height 0.3 ease-out;
 }
 
 #listMenu div {
@@ -153,6 +155,40 @@ button:hover{
 .yeetButton:hover {
     background: rgb(141, 0, 0);
     transition: .3s;
+}
+
+#listDropDown {
+    position: relative;
+}
+
+#list-header {
+    cursor: pointer;
+}
+
+#showLists {
+    position: absolute;
+    left: 85px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0px 1 1;
+    animation: fadein .2s;
+    display: none;
+    box-shadow: 0 0 10px;
+    padding: 10px;
+}
+
+#showLists li {
+    margin-top: 5px;
+}
+
+#showLists li a {
+    text-decoration: none;
+    color: black;
+}
+
+#showLists li a:hover {
+    text-decoration: none;
+    color: green;
 }
 
 /* things for animation */
