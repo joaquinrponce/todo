@@ -3,34 +3,41 @@ import * as display from './display.js'
 
 const listDisplay = document.getElementById('showLists')
 
-function switchList(e) {
-    database.switchList(database.findList(e.target.textContent)) 
-    display.list(database.currentList)
+function switchList (e) {
+  database.switchList(database.findList(e.target.textContent))
+  display.list(database.currentList)
 };
 
-function makeNewList() {
-    let list = database.newList();
-    appendList(list);
+function makeNewList () {
+  const list = database.newList()
+  appendList(list)
 };
 
-function appendList(list) {
-    let listItem = document.createElement('li');
-    listItem.innerHTML = `<a href='#'>${list.name}</a>`;
-    listItem.addEventListener('click', switchList);
-    listDisplay.appendChild(listItem);
+function appendList (list) {
+  const listItem = document.createElement('li')
+  const listLink = document.createElement('a')
+  const listYeet = document.createElement('button')
+  listLink.textContent = list.name
+  listYeet.textContent = 'X'
+  listYeet.classList.add('yeetButton')
+  listYeet.classList.add('yeetList')
+  listLink.addEventListener('click', switchList)
+  listItem.appendChild(listLink)
+  listItem.appendChild(listYeet)
+  listDisplay.appendChild(listItem)
 }
 
-function collapseList() {
-    let style = listDisplay.style.display;
-    listDisplay.style.display = style === 'none' ? 'block' : 'none';
+function collapseList () {
+  const style = listDisplay.style.display
+  listDisplay.style.display = style !== 'flex' ? 'flex' : 'none'
 }
 
-document.getElementById('newListButton').addEventListener('click', makeNewList );
-document.getElementById('newToDoButton').addEventListener('click', database.newToDo );
-display.list(database.currentList);
+document.getElementById('newListButton').addEventListener('click', makeNewList)
+document.getElementById('newToDoButton').addEventListener('click', database.newToDo)
+display.list(database.currentList)
 
 database.allLists.forEach(list => {
-    appendList(list);
+  appendList(list)
 })
 
-document.getElementById('list-header').addEventListener('click', collapseList )
+document.getElementById('list-header').addEventListener('click', collapseList)
