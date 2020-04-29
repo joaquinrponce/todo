@@ -157,6 +157,10 @@ button:hover{
     transition: .3s;
 }
 
+.yeetList {
+    margin-left: auto;
+}
+
 #listDropDown {
     position: relative;
 }
@@ -167,7 +171,7 @@ button:hover{
 
 #showLists {
     position: absolute;
-    left: 85px;
+    left: 45px;
     border-radius: 5px;
     background: white;
     box-shadow: 0px 1 1;
@@ -175,9 +179,11 @@ button:hover{
     display: none;
     box-shadow: 0 0 10px;
     padding: 10px;
+    flex-direction: column;
 }
 
 #showLists li {
+    display: flex;
     margin-top: 5px;
 }
 
